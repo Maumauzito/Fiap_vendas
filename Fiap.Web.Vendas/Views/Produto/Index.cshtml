@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Fiap.Web.Vendas.Models.ProdutoModel>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+
+
+<h2>Produtos</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Categoria</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr>
+                <td>@produto.Nome</td>
+                <td>@produto.Preco.ToString("C")</td>
+                <td>@produto.Quantidade</td>
+                <td>@produto.Categoria</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Produto" asp-action="Cadastrar" class="btn btn-primary">Cadastrar Produto</a>
